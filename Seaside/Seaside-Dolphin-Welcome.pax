@@ -1,0 +1,51 @@
+| package |
+package := Package name: 'Seaside-Dolphin-Welcome'.
+package paxVersion: 1;
+	basicComment: ''.
+
+
+package methodNames
+	add: #GRDolphinPlatform -> #seasideIsAuthorNameSet;
+	add: #GRDolphinPlatform -> #seasideSetAuthorName:;
+	yourself.
+
+package binaryGlobalNames: (Set new
+	yourself).
+
+package globalAliases: (Set new
+	yourself).
+
+package setPrerequisites: (IdentitySet new
+	add: '..\Grease\Grease-Dolphin-Core';
+	add: 'Seaside-Welcome';
+	yourself).
+
+package setManualPrerequisites: #(
+	'Seaside-Welcome').
+
+package!
+
+"Class Definitions"!
+
+
+"Global Aliases"!
+
+
+"Loose Methods"!
+
+!GRDolphinPlatform methodsFor!
+
+seasideIsAuthorNameSet
+
+	"Let's say it is"
+
+	^true!
+
+seasideSetAuthorName: anAuthorName
+	
+	"We don't do anything with this"! !
+!GRDolphinPlatform categoriesFor: #seasideIsAuthorNameSet!public! !
+!GRDolphinPlatform categoriesFor: #seasideSetAuthorName:!public! !
+
+"End of package definition"!
+

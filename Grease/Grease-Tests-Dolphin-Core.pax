@@ -1,0 +1,76 @@
+| package |
+package := Package name: 'Grease-Tests-Dolphin-Core'.
+package paxVersion: 1;
+	basicComment: ''.
+
+package basicPackageVersion: '8'.
+
+
+package classNames
+	add: #GRDolphinCodecTest;
+	add: #GRDolphinColorTest;
+	add: #GRDolphinGenericCodecTest;
+	add: #GRDolphinPlatformTest;
+	yourself.
+
+package methodNames
+	add: 'GRPackage class' -> #greaseTestsDolphinCore;
+	yourself.
+
+package binaryGlobalNames: (Set new
+	yourself).
+
+package globalAliases: (Set new
+	yourself).
+
+package setPrerequisites: (IdentitySet new
+	add: '..\Core\Object Arts\Dolphin\Base\Dolphin';
+	add: '..\Core\Object Arts\Dolphin\MVP\Base\Dolphin MVP Base';
+	add: 'Grease-Core';
+	add: '..\Core\Contributions\Camp Smalltalk\SUnit\SUnit';
+	yourself).
+
+package!
+
+"Class Definitions"!
+
+TestCase subclass: #GRDolphinCodecTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	classInstanceVariableNames: ''!
+TestCase subclass: #GRDolphinColorTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	classInstanceVariableNames: ''!
+TestCase subclass: #GRDolphinGenericCodecTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	classInstanceVariableNames: ''!
+TestCase subclass: #GRDolphinPlatformTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	classInstanceVariableNames: ''!
+
+"Global Aliases"!
+
+
+"Loose Methods"!
+
+!GRPackage class methodsFor!
+
+greaseTestsDolphinCore
+	^(self new)
+		name: 'Grease-Tests-Dolphin-Core';
+		description: 'Unit tests for the package Grease-Dolphin-Core.';
+		addDependency: 'Grease-Dolphin-Core';
+		addDependency: 'Grease-Tests-Core';
+		url: #seasideUrl;
+		yourself! !
+!GRPackage class categoriesFor: #greaseTestsDolphinCore!*grease-tests-pharo-core!public! !
+
+"End of package definition"!
+

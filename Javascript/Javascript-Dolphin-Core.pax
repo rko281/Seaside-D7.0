@@ -1,0 +1,82 @@
+| package |
+package := Package name: 'Javascript-Dolphin-Core'.
+package paxVersion: 1;
+	basicComment: ''.
+
+package basicPackageVersion: '9'.
+
+
+package methodNames
+	add: #Color -> #javascriptOn:;
+	add: #Float -> #javascriptOn:;
+	add: #GRCodecStream -> #javascript:;
+	add: 'GRPackage class' -> #javascriptDolphinCore;
+	yourself.
+
+package binaryGlobalNames: (Set new
+	yourself).
+
+package globalAliases: (Set new
+	yourself).
+
+package setPrerequisites: (IdentitySet new
+	add: '..\Core\Object Arts\Dolphin\Base\Dolphin';
+	add: '..\Core\Object Arts\Dolphin\MVP\Base\Dolphin MVP Base';
+	add: '..\Grease\Grease-Core';
+	yourself).
+
+package!
+
+"Class Definitions"!
+
+
+"Global Aliases"!
+
+
+"Loose Methods"!
+
+!Color methodsFor!
+
+javascriptOn: aStream
+	aStream
+		nextPut: $";
+		nextPutAll: self asHTMLColor;
+		nextPut: $"! !
+!Color categoriesFor: #javascriptOn:!public! !
+
+!Float methodsFor!
+
+javascriptOn: aStream
+
+	"To satisfy:
+		self assert: Float nan equals: 'NaN'.
+		self assert: Float infinity equals: 'Infinity'.
+		self assert: Float infinity * -1 equals: '-Infinity'"
+
+	| classification |
+	classification := self fpClass.
+	(classification anyMask: FpClassNaN) ifTrue: [^aStream nextPutAll: 'NaN'].
+	(classification anyMask: FpClassInfinite) ifTrue: [^aStream nextPutAll: ((classification anyMask: FpClassNegative) ifTrue: ['-Infinity'] ifFalse: ['Infinity'])].
+
+	^self printOn: aStream! !
+!Float categoriesFor: #javascriptOn:!printing!public! !
+
+!GRCodecStream methodsFor!
+
+javascript: anObject
+	anObject javascriptOn: self! !
+!GRCodecStream categoriesFor: #javascript:!*javascript-pharo-core!public! !
+
+!GRPackage class methodsFor!
+
+javascriptDolphinCore
+	^(self new)
+		name: 'Javascript-Dolphin-Core';
+		addDependency: 'Javascript-Core';
+		addDependency: 'Seaside-Dolphin-Core';
+		url: #seasideUrl;
+		yourself! !
+!GRPackage class categoriesFor: #javascriptDolphinCore!*javascript-pharo-core!public! !
+
+"End of package definition"!
+
